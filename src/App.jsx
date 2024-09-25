@@ -2,9 +2,16 @@ import { useState } from 'react'
 import './App.css'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-
-function App() {
+//bien namefunction =('tham so dau vao) =>{ lenh}
+const App =()=> {
   const [count, setCount] = useState(0)
+  // function myFunction (){
+  //   console.log('hello world from html');
+  // }
+  const myFunction =()=>{
+    console.log(' run my arrow function ');
+  };
+  myFunction();
 
   return (
     <>
