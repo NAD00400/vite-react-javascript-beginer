@@ -3,7 +3,7 @@ import './App.css'
 import reactLogo from './assets/react.svg'
 import MyComponent from './Components/learn/MyComponent'
 // import SecondComponent from './Components/learn/SecondComponent' import có default
-import {SecondComponent,ThirdComponent} from './Components/learn/SecondComponent' 
+import { SecondComponent, ThirdComponent } from './Components/learn/SecondComponent'
 import viteLogo from '/vite.svg'
 
 
