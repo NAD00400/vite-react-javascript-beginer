@@ -6,14 +6,16 @@ const TodoData =(props)=>{ //chỗn props này có thể truyền vô key /{name
     // const name =props.name ;
     // const age = props.age ;
     // const dâta = props.data ;
+    console.log('>>> check todo list ', props);
     return (
         <div className='todo-data'>
             <div>my name is {name}</div>
             {/* <div>Im {age} year old</div>
             <div>where i am was born is {data.country}</div> */}
-            
+            <div> {JSON.stringify(props.todoList) }</div>
             <div>Learning </div>
             <div>watching tv </div>
+            <div></div>
         </div>
     )
 }
