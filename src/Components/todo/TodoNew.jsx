@@ -7,13 +7,12 @@ const TodoNew=(props)=>{
     // const valueInput ="";
     const [valueInput,setValueInput]= useState('eric')
     const handleClick = ()=>{
-        console.log(">>check value input: ",valueInput);
-        
+        addNewTodo(valueInput)
     }
+   
     const handleOnChange=(name)=>{
         // console.log("handle on change",name );
         setValueInput(name)
-        
     }
    return (   
         <div className='todo-new'>
