@@ -1,5 +1,11 @@
+
 const TodoData =(props)=>{ 
-    const {todoList}= props;
+    const {todoList,deleteTodo}= props;
+    
+
+    const handleClick= (id) =>{   
+        deleteTodo(id);
+    }
     console.log('>>> check todo list :',todoList);
     return (
         <div className='todo-data'>
@@ -9,7 +15,9 @@ const TodoData =(props)=>{
                       
                     <div className="todo-item">
                     <div>{item.name}</div>
-                    <button >Delete</button>
+                    <button 
+                    onClick = {()=> {handleClick(item.id)}}
+                    >Delete</button>
                 </div>);
             })}            
         </div>
