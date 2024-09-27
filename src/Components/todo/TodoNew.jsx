@@ -8,4 +8,4 @@ const TodoNew=(props)=>{
         </div>
    )
 }
-export {TodoNew}
+export { TodoNew };
