@@ -28,14 +28,14 @@ const App =()=> {
       <TodoNew
        addNewTodo={addNewTodo}
       />
-      <TodoData
-        todoList ={todoList}
-      />
-      <div className='todo-image'>
-        <img src={reactLogo} alt="React Logo" className='logo'/>
-      </div>
+      {todoList.length >0 ?
+        <TodoData todoList ={todoList}/>
+      :
+        < div className='todo-image'>
+          <img src={reactLogo} alt="React Logo" className='logo'/>
+        </div>
+      }     
     </div>
-    
   )
 }
 export default App
