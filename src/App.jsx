@@ -6,15 +6,15 @@ import { TodoNew } from './Components/todo/TodoNew'
 const App =()=> {
 
   const name="Eric Arsenal";
-  const age=25;
-  const data={
-    address: 'ha noi',
-    country:'viet nam'
-    };
+  // const age=25;
+  // const data={
+  //   address: 'ha noi',
+  //   country:'viet nam'
+  //   };
   
   const [todoList, setTodoList]=useState([
-    { id :1 , name : 'Learning React' },
-    { id :2 , name : 'nguyen anh duy' }
+    { id :1 , name : 'Code' },
+    { id :2 , name : 'Gym' }
   ])
 
   const addNewTodo =(name)=>{
@@ -36,10 +36,10 @@ const App =()=> {
        addNewTodo={addNewTodo}//   truyền 1 hàm 
       />
       <TodoData
-      todoList ={todoList}
-        name={name}
-        data={data}
-        age={age}
+        todoList ={todoList}
+        // name={name}
+        // data={data}
+        // age={age}
        
       />
       <div className='todo-image'>
