@@ -5,6 +5,7 @@ import { TodoData } from './Components/todo/TodoData'
 import { TodoNew } from './Components/todo/TodoNew'
 import { Header } from './Components/layout/header'
 import { Footer } from './Components/layout/footer'
+import { Outlet } from 'react-router-dom'
 const App =()=> {
 
   const [todoList, setTodoList]=useState([
@@ -29,7 +30,7 @@ const App =()=> {
   
   return (
     <>
-    <Outlet/>
+    
     <Header/>
     <div className="todo-container">
       <div className="todo-title">Todo List</div>
@@ -46,6 +47,7 @@ const App =()=> {
         </div>
       }
     </div>
+    <Outlet/>
     <Footer/>
     </>
   )
