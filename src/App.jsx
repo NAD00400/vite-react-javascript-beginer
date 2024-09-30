@@ -3,7 +3,8 @@ import reactLogo from './assets/react.svg'
 import './Components/todo/todo.css'
 import { TodoData } from './Components/todo/TodoData'
 import { TodoNew } from './Components/todo/TodoNew'
-
+import { Header } from './Components/layout/header'
+import { Footer } from './Components/layout/footer'
 const App =()=> {
 
   const [todoList, setTodoList]=useState([
@@ -27,6 +28,8 @@ const App =()=> {
   }
   
   return (
+    <>
+    <Header/>
     <div className="todo-container">
       <div className="todo-title">Todo List</div>
       <TodoNew
@@ -40,8 +43,10 @@ const App =()=> {
         < div className='todo-image'>
           <img src={reactLogo} alt="React Logo" className='logo'/>
         </div>
-      }     
+      }
     </div>
+    <Footer/>
+    </>
   )
 }
 export default App
