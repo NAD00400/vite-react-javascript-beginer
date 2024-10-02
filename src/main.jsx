@@ -7,15 +7,17 @@ import {
 import App from './App.jsx';
 import { TodoApp } from './Components/todo/TodoApp.jsx';
 import { LoginPage } from './page/login.jsx';
-import { ProductPage } from './page/product.jsx';
+import { ProductPage } from './page/book.jsx';
 import { RegisterPage } from './page/register.jsx';
 import { UserPage } from './page/user.jsx';
 import './style/global.css';
+import ErrorPage from './page/error.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App/>,
+    errorElement: <ErrorPage />,
     children :[
       {
         index: true,

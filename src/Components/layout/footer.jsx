@@ -1,9 +1,9 @@
 import './footer.css'
 const Footer=()=>{
     return (
-        <div class="footer">
+        <div className="footer">
         <p>React vite </p>
         </div>
     )
 }
-export {Footer}
+export { Footer }
