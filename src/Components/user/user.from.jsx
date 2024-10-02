@@ -1,15 +1,24 @@
-import { Button, Input } from "antd"
-import { useState } from "react"
+import { Button, Input } from "antd";
+import axios from "axios";
+import { useState } from "react";
 
 const UserFrom =()=>{
     const [fullName ,setFullName]= useState("") ;
     const [email, setEmail] = useState("");
     const [password, setPassword] =useState("");
-    const [phoneNumber,setPhoneNumber]= useState("");
-    console.log(">>>>>>>>>>>>>>>>>>>>>");
-    
+    const [phone,setPhoneNumber]= useState("");
+       
     const handleClickBtn = ()=>{
-        alert("click me ")
+        const URL_BACKEND = "http://localhost:8080/api/v1/user" 
+        const data = {
+            fullName: fullName,
+            email :email,
+            password:password,
+            phone:phone
+            /// 1 cách viết khác của phần bên trong data là { fullName, email, password, phoneNumber }
+         };
+        axios.post(URL_BACKEND,data);
+        console.log(">>>> check data :", {fullName ,email,password,phone});// cho cái đống shit này thành đối tượng để dễ nhìn thôi thay vì hiện 1 nùi data    
     } 
     
     return(  
@@ -42,13 +51,14 @@ const UserFrom =()=>{
             <div> 
                 <span> Phone Number</span>
                 <Input placeholder="text"
-                value={phoneNumber} 
+                value={phone} 
                 onChange={(event)=>{setPhoneNumber(event.target.value)}}
                 />   
             </div>
-            <div> <Button type="primary" onClick={()=>{handleClickBtn}}>Creat User</Button></div>
+            <div> <Button type="primary" onClick={()=>{handleClickBtn()}}>Creat User</Button></div>
         </div>
     </div> 
     )
 }
-export { UserFrom }
+export { UserFrom };
+
