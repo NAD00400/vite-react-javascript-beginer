@@ -1,26 +1,29 @@
-import { Button, Input } from "antd";
-import axios from "axios";
+import { Button, Input, notification } from "antd";
 import { useState } from "react";
-
+import { createUserAPI } from "../../servcies/api.servcies";
 const UserFrom =()=>{
     const [fullName ,setFullName]= useState("") ;
     const [email, setEmail] = useState("");
     const [password, setPassword] =useState("");
     const [phone,setPhoneNumber]= useState("");
        
-    const handleClickBtn = ()=>{
-        const URL_BACKEND = "http://localhost:8080/api/v1/user" 
-        const data = {
-            fullName: fullName,
-            email :email,
-            password:password,
-            phone:phone
-            /// 1 cách viết khác của phần bên trong data là { fullName, email, password, phoneNumber }
-         };
-        axios.post(URL_BACKEND,data);
-        console.log(">>>> check data :", {fullName ,email,password,phone});// cho cái đống shit này thành đối tượng để dễ nhìn thôi thay vì hiện 1 nùi data    
+    const handleClickBtn = async () => {
+        const res = await createUserAPI(fullName, email, password, phone);
+        if (res.data) {
+            notification.success({
+                message: "create user",
+                description: "Tạo user thành công"
+            })
+        }
+        else {
+            notification.error({
+                message: "Error create user",
+                description: JSON.stringify(res.message)
+            })
+        }
+
     } 
-    
+
     return(  
     <div className="user-from" style={{margin :"20px 0px"}}>
         <div  style={{display:"flex" ,gap :"15px", flexDirection: "column"}}>
