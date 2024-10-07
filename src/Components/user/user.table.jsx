@@ -1,36 +1,31 @@
-import { Table } from "antd";
-import {FecthAllUserAPI} from "../../servcies/api.servcies";
-import { useState } from "react";
-const UserTable  =()=>{
-  const [dataUsers, setDataUsers] = useState([
-    { _id: "eric", fullName: 25, email: "hn" },
-    { _id: "hoidanit", fullName: 25, email: "hcm" }
-]);
-    const columns = [
-        {
-          title:'_Id',
-          dataIndex:'_id',
-        },
-        {
-          title: "Full Name",
-          dataIndex:'fullName'
-        },
-        {
-          title :"Email",
-          dataIndex:'email'
-        },
-      ];
-      const loadUser =async()=>{
-        const res =await FecthAllUserAPI()
+import { Table } from 'antd';
+
+const UserTable = (props) => {
+  const { dataUsers } = props;
+
+  const columns = [
+      {
+          title: 'Id',
+          dataIndex: '_id',
+      },
+      {
+          title: 'Full Name',
+          dataIndex: 'fullName',
+      },
+      {
+          title: 'Email',
+          dataIndex: 'email',
       }
-      loadUser()
-      console.log(">>>> check render");
-       
-    return(
-     
-      <>
-        <Table  columns={columns} dataSource={dataUsers} />
-      </>
-    )
+  ];
+
+
+  return (
+    <Table
+        columns={columns}
+        dataSource={dataUsers}
+        rowKey={"_id"}
+    />
+)
 }
-export { UserTable };
+
+export {UserTable};
