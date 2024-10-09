@@ -1,32 +1,32 @@
 import { Input, Modal, notification } from "antd";
 import { useEffect, useState } from "react";
-import { updateUserAPI } from "../services/api.service";
+import { updateUserAPI } from "../../servcies/api.service";
 
-const UpdateUserModal = (props) => {
-    const [id, setId] = useState("");
+const UpdateUserModal=(props)=>{
+    // const { loadUser } = props;
+    
     const [fullName, setFullName] = useState("");
+    const [id, setId] = useState("");
     const [phone, setPhone] = useState("");
 
-    const { isModalUpdateOpen, setIsModalUpdateOpen,
-        dataUpdate, setDataUpdate,
-        loadUser
-    } = props;
+    const {IsModalUpdateUser ,setIsModalUpdateUser ,dataUpdate ,setDataUpdate ,loadUser} = props;
 
-    //next dataUpdate != prev dataUpdate
-    useEffect(() => {
-        if (dataUpdate) {
-            setId(dataUpdate._id)
+    // next dataUpdate != prev dataUpdate
+    useEffect(()=>{
+        // console.log(">>check dataUpdate",dataUpdate);
+        if(dataUpdate){
             setFullName(dataUpdate.fullName);
+            setId(dataUpdate._id);
             setPhone(dataUpdate.phone);
         }
-    }, [dataUpdate])
-
+        
+    },[dataUpdate])
     const handleSubmitBtn = async () => {
-        const res = await updateUserAPI(id, fullName, phone);
+        const res = await updateUserAPI(id,fullName,phone);
         if (res.data) {
             notification.success({
-                message: "Update user",
-                description: "Cập nhât thành công"
+                message: "Cập nhật User thành công",
+                description: "Tạo user thành công"
             })
             resetAndCloseModal();
             await loadUser();
@@ -38,50 +38,46 @@ const UpdateUserModal = (props) => {
             })
         }
     }
-
     const resetAndCloseModal = () => {
-        setIsModalUpdateOpen(false);
+        setIsModalUpdateUser(false);
         setFullName("");
-        setPhone("");
         setId("");
+        setPhone("");
         setDataUpdate(null);
     }
-
-
-    return (
-        <Modal
-            title="Update a User"
-            open={isModalUpdateOpen}
-            onOk={() => handleSubmitBtn()}
-            onCancel={() => resetAndCloseModal()}
-            maskClosable={false}
-            okText={"SAVE"}
-        >
-            <div style={{ display: "flex", gap: "15px", flexDirection: "column" }}>
-                <div>
-                    <span>Id</span>
-                    <Input
-                        value={id}
-                        disabled
-                    />
+    return(
+            <Modal
+                title="Update User"
+                open={IsModalUpdateUser}
+                onOk={() => handleSubmitBtn()}
+                onCancel={() => resetAndCloseModal()}
+                maskClosable={false}
+                okText={"Save"}
+            >
+                <div style={{ display: "flex", gap: "15px", flexDirection: "column" }}>
+                    <div>
+                        <span>ID</span>
+                        <Input
+                            value={id}
+                            disabled
+                        />
+                    </div>
+                    <div>
+                        <span>Full Name</span>
+                        <Input
+                            value={fullName}
+                            onChange={(event) => { setFullName(event.target.value) }}
+                        />
+                    </div>
+                    <div>
+                        <span>Phone number</span>
+                        <Input
+                            value={phone}
+                            onChange={(event) => { setPhone(event.target.value) }}
+                        />
+                    </div>
                 </div>
-                <div>
-                    <span>Full Name</span>
-                    <Input
-                        value={fullName}
-                        onChange={(event) => { setFullName(event.target.value) }}
-                    />
-                </div>
-
-                <div>
-                    <span>Phone number</span>
-                    <Input
-                        value={phone}
-                        onChange={(event) => { setPhone(event.target.value) }}
-                    />
-                </div>
-            </div>
-        </Modal>
-    )
+            </Modal>
+        );
 }
-export default UpdateUserModal;
+export { UpdateUserModal };
